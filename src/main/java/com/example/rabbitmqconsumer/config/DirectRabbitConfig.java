@@ -26,4 +26,13 @@ public class DirectRabbitConfig {
     }
 
 
+
+    //消息回调验证：消息推送到server，找到交换机，但找不到队列
+    @Bean
+    DirectExchange lonelyDirectExchange(){
+        return new DirectExchange("loneltDirectExchange");
+    }
+
+
+
 }
