@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class MessageListenerConfig {
 
+    //rabbitmq链接工厂
     @Autowired
     private CachingConnectionFactory connectionFactory;
 
@@ -20,7 +21,9 @@ public class MessageListenerConfig {
     @Bean
     public SimpleMessageListenerContainer simpleMessageListenerContainer(){
         SimpleMessageListenerContainer container = new SimpleMessageListenerContainer(connectionFactory);
+        //确认消费者数量
         container.setConcurrentConsumers(1);
+        //最大消费者数量
         container.setMaxConcurrentConsumers(1);
         //RabbitMQ默认自动确认：AcknowledgeMode.NONE,这里改为手动确认消息
         container.setAcknowledgeMode(AcknowledgeMode.MANUAL);

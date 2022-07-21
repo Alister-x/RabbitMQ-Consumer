@@ -24,7 +24,9 @@ public class MyAckReceiver implements ChannelAwareMessageListener {
             String messageData = msgMap.get("messageData");
             String createTime = msgMap.get("createTime");
             ois.close();
-            System.out.println("MyAckReceiver  messageId:"+messageId+"   messageData:"+messageData+"    createTime:"+createTime);
+            System.out.println("MyAckReceiver  messageId:"+messageId);
+            System.out.println("messageData:"+messageData);
+            System.out.println("createTime:"+createTime);
             System.out.println("消费的主题消息来自："+message.getMessageProperties().getConsumerQueue());
             //第二个参数，手动确认可以被批处理，当该参数为 true 时，则可以一次性确认 delivery_tag 小于等于传入值的所有消息
             channel.basicAck(deliveryTag, true);
@@ -33,6 +35,7 @@ public class MyAckReceiver implements ChannelAwareMessageListener {
             // channel.basicReject(deliveryTag, true);
 
         }catch (Exception e){
+
             channel.basicReject(deliveryTag,false);
         }
     }

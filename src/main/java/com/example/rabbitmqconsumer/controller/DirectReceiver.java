@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 @Component
-@RabbitListener(queues = "TestDirectQueue")
+//@RabbitListener(queues = "TestDirectQueue")
 public class DirectReceiver {
 
     @RabbitHandler
